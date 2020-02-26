@@ -18,9 +18,8 @@ class SpecialSeekBar @JvmOverloads constructor(
     companion object {
         const val DEFAULT_MAX = 100
         const val DEFAULT_MIN = 0
-        const val DEFAULT_TEXT_SIZE = 18
         const val DEFAULT_RADIUS = 12f
-        const val DEFAULT_TEXT_COLOR = Color.BLACK
+
         const val DEFAULT_THUMB_COLOR = Color.BLACK
         const val DEFAULT_BAR_PADDING = 12f
         const val DEFAULT_BAR_HEIGHT = 12f
@@ -28,7 +27,6 @@ class SpecialSeekBar @JvmOverloads constructor(
 
         const val DEFAULT_BAR_COLOR = Color.GRAY
         const val DEFAULT_PROGRESS_COLOR = Color.CYAN
-        const val INVALID_VALUE = -1
 
 
     }
@@ -40,14 +38,12 @@ class SpecialSeekBar @JvmOverloads constructor(
     private var rectFBar: RectF? = null
     private var rectFProgress: RectF? = null
 
-    private var textColor: Int? = null
     private var thumbColor: Int? = null
     private var barColor: Int? = null
     private var progressColor: Int? = null
     private val mEnabled = true
 
 
-    private var progress: Float? = 0f
     private var max: Int? = DEFAULT_MAX
     private var min: Int? = DEFAULT_MIN
     private var thumbHeight: Float = DEFAULT_THUMB_HEIGHT
@@ -55,6 +51,7 @@ class SpecialSeekBar @JvmOverloads constructor(
     private var barHeight: Float = DEFAULT_BAR_HEIGHT
     private var cornerRadius: Float = DEFAULT_RADIUS
     private var mWidth = 200
+
     private var listener: OnCustomsSeekbarChangeListener? = null
 
 
@@ -74,7 +71,7 @@ class SpecialSeekBar @JvmOverloads constructor(
 
 
         paintThumb = Paint().apply {
-            color = Color.BLUE!!
+            color = Color.BLUE
             style = Paint.Style.FILL
             isAntiAlias = true
         }
@@ -85,7 +82,7 @@ class SpecialSeekBar @JvmOverloads constructor(
 
 
         paintProgress = Paint().apply {
-            color = Color.RED!!
+            color = Color.RED
             style = Paint.Style.FILL
             isAntiAlias = true
         }
@@ -94,7 +91,7 @@ class SpecialSeekBar @JvmOverloads constructor(
 
 
         paintBar = Paint().apply {
-            color = Color.CYAN!!
+            color = Color.CYAN
             style = Paint.Style.FILL
             isAntiAlias = true
         }
@@ -279,11 +276,11 @@ class SpecialSeekBar @JvmOverloads constructor(
     }
 
     interface OnCustomsSeekbarChangeListener {
-        fun onChanged(seekbarVertical: SpecialSeekBar, progress: Int, frommUser: Boolean)
+        fun onChanged(seekbar: SpecialSeekBar, progress: Int, frommUser: Boolean)
 
-        fun onStartTrackingTouch(seekbarVertical: SpecialSeekBar)
+        fun onStartTrackingTouch(seekbar: SpecialSeekBar)
 
-        fun onStopTrackingTouch(seekbarVertical: SpecialSeekBar)
+        fun onStopTrackingTouch(seekbar: SpecialSeekBar)
 
     }
 
